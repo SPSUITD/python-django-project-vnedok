@@ -1,0 +1,10 @@
+<a href="{% url 'index' %}">На главную</a><br>
+{% for message in messages %}
+  {% ifchanged %}{{ message.user_from }}:<br>{% endifchanged %}
+  {{ message.publication_time.time }} {{ message.body }}<br>
+{% endfor %}
+<form method="POST">
+  {% csrf_token %}
+  <input type='text' required name="body" placeholder="Введите ваше сообщение">
+  <button type="submit">Отправить</button>
+</form>

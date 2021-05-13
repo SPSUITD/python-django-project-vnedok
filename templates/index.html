@@ -1,0 +1,12 @@
+{% if user.is_authenticated %}
+  <p>Пользователи:</p>
+  {% for user in users %}
+    <a href="{% url 'dialog-page' username=user.username %}">{{ user }}</a><br>
+  {% endfor %}
+{% else %}
+Чтобы общаться с пользователями, пожалуйста <a href="{% url 'login' %}">авторизуйтесь</a>
+{% endif %}
+<p>Каналы:</p>
+{% for channel in channels %}
+  <a href="{% url 'channel-page' title=channel.title %}">{{ channel.title }}</a><br>
+{% endfor %}
